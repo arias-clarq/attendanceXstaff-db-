@@ -1,10 +1,11 @@
 <?php
-    session_start();
-    $_SESSION['title'] = 'Admin Page';
-    include '../dashboard/header.php';
+session_start();
+$_SESSION['title'] = 'Admin Page';
+include '../dashboard/header.php';
+include '../../config/dbcon.php';
 ?>
-<?php 
-    include '../dashboard/nav.php';
+<?php
+include '../dashboard/nav.php';
 ?>
 <div class="container mt-5 text-white">
     <h1 class="text-center mb-4">Dashboard</h1>
@@ -15,7 +16,7 @@
     function updateSystemTime() {
         var systemTimeElement = document.getElementById('system-time');
         var now = new Date();
-        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric'};
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
         var formattedTime = now.toLocaleDateString('en-US', options);
         systemTimeElement.textContent = 'System Time: ' + formattedTime;
     }
@@ -32,9 +33,18 @@
     <div class="col">
         <div class="card bg-dark text-white">
             <div class="card-body">
+                <?php
+                $sql = "SELECT COUNT(*) as admin FROM `tbl_employee_account` WHERE `login_role` = 1;";
+                $res = $conn->query($sql);
+                $admin = $res->fetch_assoc();
+
+                $sql = "SELECT COUNT(*) as employee FROM `tbl_employee_account` WHERE `login_role` = 2;";
+                $res = $conn->query($sql);
+                $employee = $res->fetch_assoc();
+                ?>
                 <h5 class="card-title">Users</h5>
-                <p class="card-text">Total Staff: </p>
-                <p class="card-text">Total Admin: </p>
+                <p class="card-text">Total Staff: <?= $employee['employee'] ?></p>
+                <p class="card-text">Total Admin: <?= $admin['admin'] ?></p>
                 <p class="card-text">Total Client: </p>
                 <a href="users_mgt.php" class="btn btn-primary">View Details</a>
             </div>
@@ -44,9 +54,9 @@
         <div class="card bg-dark text-white">
             <div class="card-body">
                 <h5 class="card-title">Attendance</h5>
-                <p class="card-text">lorem ipsum</p>
-                <p class="card-text">lorem ipsum</p>
-                <p class="card-text">lorem ipsum</p>
+                <p class="card-text">Today Attendance:</p>
+                <p class="card-text">Weekly Attendance:</p>
+                <p class="card-text">Monthly Attendance:</p>
                 <a href="attendance.php" class="btn btn-primary">View Details</a>
             </div>
         </div>
@@ -74,6 +84,6 @@
         </div>
     </div>
 </div>
-<?php 
-    include '../dashboard/footer.php';
+<?php
+include '../dashboard/footer.php';
 ?>

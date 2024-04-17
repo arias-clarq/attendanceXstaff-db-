@@ -110,68 +110,58 @@
                 </div>
 
                 <hr>
-                <?php
-                $id = $row['account_id'];
-                $sql2 = "SELECT * FROM `tbl_employement` WHERE `job_id` = $id";
-                $res2 = $conn->query($sql2);
-                while ($row2 = $res2->fetch_assoc()) {
-                    ?>
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Job Title</span>
-                        <input type="text" value="<?= $row2['job_title'] ?>" class="form-control"
-                            placeholder="Enter Job Title" name="job_title">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Job Title</span>
+                    <input type="text" value="<?= $row['job_title'] ?>" class="form-control"
+                        placeholder="Enter Job Title" name="job_title">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Employement Number</span>
-                        <input type="text" value="<?= $row2['employement_num'] ?>" class="form-control"
-                            placeholder="Enter employement number" name="employement_num">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Employement Number</span>
+                    <input type="text" value="<?= $row['employement_num'] ?>" class="form-control"
+                        placeholder="Enter employement number" name="employement_num">
+                </div>
 
-                    <div class=" input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Department Number</span>
-                        <input type="text" value="<?= $row2['department_number'] ?>" class="form-control"
-                            placeholder="Enter department number" name="department_num">
-                    </div>
+                <div class=" input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Department Number</span>
+                    <input type="text" value="<?= $row['department_number'] ?>" class="form-control"
+                        placeholder="Enter department number" name="department_num">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Hire Date</span>
-                        <input type="date" value="<?= $row2['hire_date'] ?>" class="form-control" name="hire_date">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Hire Date</span>
+                    <input type="date" value="<?= $row['hire_date'] ?>" class="form-control" name="hire_date">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Employee Status</span>
-                        <input type="text" value="<?= $row2['employee_status'] ?>" class="form-control"
-                            placeholder="Enter Employee Status" name="employee_status">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Employee Status</span>
+                    <input type="text" value="<?= $row['employee_status'] ?>" class="form-control"
+                        placeholder="Enter Employee Status" name="employee_status">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Job Value</span>
-                        <input type="number" value="<?= $row2['job_value'] ?>" class="form-control"
-                            placeholder="Enter job value" name="job_value">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Job Value</span>
+                    <input type="number" value="<?= $row['job_value'] ?>" class="form-control"
+                        placeholder="Enter job value" name="job_value">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Department value</span>
-                        <input type="number" value="<?= $row2['dep_value'] ?>" class="form-control"
-                            placeholder="Enter Department value" name="dep_value">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Department value</span>
+                    <input type="number" value="<?= $row['dep_value'] ?>" class="form-control"
+                        placeholder="Enter Department value" name="dep_value">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Statistic Value</span>
-                        <input type="number" value="<?= $row2['stat_value'] ?>" class="form-control"
-                            placeholder="Enter Statistic Value" name="stat_value">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Statistic Value</span>
+                    <input type="number" value="<?= $row['stat_value'] ?>" class="form-control"
+                        placeholder="Enter Statistic Value" name="stat_value">
+                </div>
 
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Salary</span>
-                        <input type="number" value="<?= $row2['salary'] ?>" class="form-control" placeholder="Enter Salary"
-                            name="salary">
-                    </div>
-
-                    <?php
-                }
-                ?>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Salary</span>
+                    <input type="number" value="<?= $row['salary'] ?>" class="form-control" placeholder="Enter Salary"
+                        name="salary">
+                </div>
 
                 <hr>
             </div>

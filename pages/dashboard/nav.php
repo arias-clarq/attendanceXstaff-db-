@@ -15,7 +15,7 @@
                             data-bs-toggle="tooltip" data-bs-placement="left" title="Attendance Monitoring"></i></a>
                 </li>
                 <li class="nav-item">
-                    <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#profileModal">
+                    <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#profile">
                         <i class="fa-solid fa-user fa-xl" data-bs-toggle="tooltip" data-bs-placement="left"
                             title="Profile"></i>
                     </button>
@@ -48,6 +48,17 @@
                     </div>
                 </div>
             </div>
+            <?php
+            include '../../config/dbcon.php';
+            $login_id = $_SESSION['login_id'];
+            $sql = "SELECT * FROM `tbl_employee_account` 
+                    INNER JOIN tbl_employee_info ON tbl_employee_account.employee_info_id = tbl_employee_info.employee_info_id
+                    INNER JOIN tbl_employement ON tbl_employee_account.job_id = tbl_employement.job_id 
+                    WHERE account_id = $login_id";
+            $profRes = $conn->query($sql);
+            $profile = $profRes->fetch_assoc();
+            include "profile_modal.php";
+            ?>
 
         </div>
     </div>
