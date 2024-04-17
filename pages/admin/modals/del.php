@@ -1,6 +1,6 @@
 <!-- The Delete User Modal -->
 <div class="modal fade" id="delete_user<?= $row['account_id'] ?>">
-    <div class="modal-dialog modal-dialog-center">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -10,7 +10,7 @@
             </div>
 
             <!-- Modal body -->
-            <div class="modal-body">
+            <div class="modal-body text-center">
                 <h5>Are you sure you want to delete this user?</h5>
                 <h6><?= $row['username'] ?></h6>
             </div>

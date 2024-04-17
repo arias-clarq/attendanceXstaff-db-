@@ -6,6 +6,26 @@ if (isset($_POST['add'])) {
     $password = $conn->escape_string($_POST['password']);
     $login_role = $_POST['login_role'];
 
+    $fname = $conn->escape_string($_POST['fname']);
+    $mname = $conn->escape_string($_POST['mname']);
+    $lname = $conn->escape_string($_POST['lname']);
+
+    $email = $conn->escape_string($_POST['email']);
+    $phone = $_POST['phone'];
+    $age = $_POST['age'];
+
+    $bday = $_POST['bday'];
+    $gender = $_POST['gender'];
+    $marital_status = $_POST['marital_status'];
+
+    $province = $conn->escape_string($_POST['province']);
+    $zip = $_POST['zip'];
+
+    $elem = $conn->escape_string($_POST['elem']);
+    $jhs = $conn->escape_string($_POST['jhs']);
+    $shs = $conn->escape_string($_POST['shs']);
+    $college = $conn->escape_string($_POST['college']);
+
     $sql = "INSERT INTO `tbl_employee_account`(`username`, `password`, `login_role`) VALUES ('{$username}','{$password}','{$login_role}')";
     $result = $conn->query($sql);
 
@@ -15,7 +35,45 @@ if (isset($_POST['add'])) {
         echo 'Failed to insert new user' . $conn->error;
     }
 
-    $sql = "INSERT INTO `tbl_employee_info`(`employee_info_id`, `spouse_id`, `bill_id`) VALUES ('$id','$id','$id')";
+    $sql = "INSERT INTO `tbl_employee_info`
+    (`employee_info_id`, 
+    `spouse_id`, 
+    `bill_id`, 
+    `firstname`, 
+    `middlename`, 
+    `lastname`, 
+    `birthdate`, 
+    `gender`, 
+    `age`, 
+    `marital_status`, 
+    `email`, 
+    `phone_num`, 
+    `province`, 
+    `zip`, 
+    `elem`, 
+    `jhs`, 
+    `shs`, 
+    `college`) 
+    VALUES 
+    ('$id',
+    '$id',
+    '$id',
+    '$fname',
+    '$mname',
+    '$lname',
+    '$bday',
+    '$gender',
+    '$age',
+    '$marital_status',
+    '$email',
+    '$phone',
+    '$province',
+    '$zip',
+    '$elem',
+    '$jhs',
+    '$shs',
+    '$college')";
+
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to insert new user_info' . $conn->error;

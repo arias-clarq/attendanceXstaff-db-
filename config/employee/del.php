@@ -23,7 +23,7 @@ if(isset($_POST['delete'])){
         echo 'Failed to delete user-employement' . $conn->error;
     }
 
-    $sql = "DELETE * FROM `tbl_bill` WHERE `bill_id` = $id";
+    $sql = "DELETE FROM `tbl_bill` WHERE `bill_id` = $id";
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to delete user-bill' . $conn->error;
