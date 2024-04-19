@@ -26,6 +26,26 @@ if (isset($_POST['add'])) {
     $shs = $conn->escape_string($_POST['shs']);
     $college = $conn->escape_string($_POST['college']);
 
+    $job_title = $conn->escape_string($_POST['job_title']);
+    $department = $conn->escape_string($_POST['department']);
+    $employment_status = $conn->escape_string($_POST['employment_status']);
+    $employement_num = $_POST['employement_num'];
+    $hire_date = $_POST['hire_date'];
+    $salary = $_POST['salary'];
+
+    $spouse_name = $conn->escape_string($_POST['spouse_name']);
+    $sg_relationship = $conn->escape_string($_POST['sg_relationship']);
+    $sg_phone_num = $_POST['sg_phone_num'];
+    $sg_email = $conn->escape_string($_POST['sg_email']);
+    $sg_brgy = $conn->escape_string($_POST['sg_brgy']);
+    $sg_municipal = $conn->escape_string($_POST['sg_municipal']);
+
+    $sss = $conn->escape_string($_POST['sss']);
+    $pagibig = $conn->escape_string($_POST['pagibig']);
+    $phil = $conn->escape_string($_POST['phil']);
+
+
+
     $sql = "INSERT INTO `tbl_employee_account`(`username`, `password`, `login_role`) VALUES ('{$username}','{$password}','{$login_role}')";
     $result = $conn->query($sql);
 
@@ -73,25 +93,41 @@ if (isset($_POST['add'])) {
     '$jhs',
     '$shs',
     '$college')";
-
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to insert new user_info' . $conn->error;
     }
 
-    $sql = "INSERT INTO `tbl_employement`(`job_id`) VALUES ('$id')";
+    $sql = "INSERT INTO `tbl_employement`
+    (`job_id`, 
+    `job_title`, 
+    `employement_num`, 
+    `department`, 
+    `hire_date`, 
+    `employee_status`, 
+    `salary`) 
+    VALUES 
+    ('$id',
+    '$job_title',
+    '$employement_num',
+    '$department',
+    '$hire_date',
+    '$employment_status',
+    '$salary')";
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to insert new user_employement' . $conn->error;
     }
 
-    $sql = "INSERT INTO `tbl_spouse`(`spouse_id`) VALUES ('$id')";
+    $sql = "INSERT INTO `tbl_spouse`(`spouse_id`, `spouse_name`, `relationship`, `number`, `email`, `brgy`, `municipality`) 
+    VALUES ('$id','$spouse_name','$sg_relationship','$sg_phone_num','$sg_email','$sg_brgy','$sg_municipal')";
+    
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to insert new user_spouse' . $conn->error;
     }
 
-    $sql = "INSERT INTO `tbl_bill`(`bill_id`) VALUES ('$id')";
+    $sql = "INSERT INTO `tbl_bill`(`bill_id`, `sss`, `pagibig`, `phil`) VALUES ('$id','$sss','$pagibig','$phil')";
     $result = $conn->query($sql);
     if ($result !== true) {
         echo 'Failed to insert new user_spouse' . $conn->error;

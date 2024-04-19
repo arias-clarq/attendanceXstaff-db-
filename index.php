@@ -44,6 +44,17 @@
                                     </div>
                                     <?php
                                 } ?>
+                                <?php
+                                if (isset($_SESSION['success_msg'])) {
+                                    ?>
+                                    <div class="alert alert-success  alert-dismissible">
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                        <strong>
+                                            <?= $_SESSION['success_msg'] ?>
+                                        </strong>
+                                    </div>
+                                    <?php
+                                } ?>
 
                                 <form action="config/login.php" method="post">
                                     <div class="form-outline form-white mb-4">
@@ -54,11 +65,13 @@
 
                                     <div class="form-outline form-white mb-4">
                                         <input type="password" placeholder="Enter Password"
-                                            class="form-control form-control-lg" name="password" required    />
+                                            class="form-control form-control-lg" name="password" required />
                                         <label class="form-label">Password</label>
                                     </div>
                                     <button class="btn btn-outline-light btn-lg px-5" name="login"
                                         type="submit">Login</button>
+                                    <a href="register.php" class="btn btn-outline-light btn-lg px-5" name="login"
+                                        type="button">Register</a>
                                 </form>
                             </div>
 

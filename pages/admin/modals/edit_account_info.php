@@ -1,6 +1,11 @@
+<style>
+    h5 {
+        text-align: center;
+    }
+</style>
 <!-- The Edit User Modal -->
 <div class="modal fade" id="edit_acc_info<?= $row['account_id'] ?>" data-bs-backdrop="static">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-fullscreen">
         <div class="modal-content">
 
             <!-- Modal Header -->
@@ -11,41 +16,30 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+                <h5>Employee Personal Information</h5>
                 <hr>
-                <div class="mb-3 mt-3">
-                    <div class="input-group">
-                        <span class="input-group-text fw-bold">Name</span>
-                        <input type="text" class="form-control" value="<?= $row['lastname'] ?>" placeholder="Last Name"
-                            name="lname">
-                        <input type="text" class="form-control" value="<?= $row['firstname'] ?>"
-                            placeholder="First Name" name="fname">
-                        <input type="text" class="form-control" value="<?= $row['middlename'] ?>"
-                            placeholder="Middle Name" name="mname">
-                    </div>
-
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Email</span>
-                        <input class="form-control" placeholder="Enter Email" value="<?= $row['email'] ?>" type="email"
-                            name="email" />
-                    </div>
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Phone no.</span>
-                        <input class="form-control" maxlength="11" placeholder="Enter Phone Number" type="phone"
-                            name="phone" value="<?= $row['phone_num'] ?>">
-                    </div>
-                    <div class="input-group mb-3 mt-3">
-                        <span class="input-group-text fw-bold">Age</span>
-                        <input class="form-control" value="<?= $row['age'] ?>" min="0" placeholder="Enter Age"
-                            type="number" name="age">
-                    </div>
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Name</span>
+                    <input type="text" class="form-control" value="<?= $row['lastname'] ?>" placeholder="Last Name"
+                        name="lname">
+                    <input type="text" class="form-control" value="<?= $row['firstname'] ?>" placeholder="First Name"
+                        name="fname">
+                    <input type="text" class="form-control" value="<?= $row['middlename'] ?>" placeholder="Middle Name"
+                        name="mname">
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">Age</span>
+                    <input class="form-control" value="<?= $row['age'] ?>" min="0" placeholder="Enter Age" type="number"
+                        name="age">
+                </div>
+
+                <div class="input-group mb-3 mt-3">
                     <span class="input-group-text fw-bold">Birthday</span>
                     <input class="form-control" value="<?= $row['birthdate'] ?>" type="date" name="bday">
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 mt-3">
                     <span class="input-group-text fw-bold">Gender</span>
                     <select name="gender" class="form-select">
                         <option selected disabled>Select Gender</option>
@@ -54,7 +48,7 @@
                     </select>
                 </div>
 
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 mt-3">
                     <span class="input-group-text fw-bold">Marital Status</span>
                     <select name="marital_status" class="form-select">
                         <option selected disabled>Select Option</option>
@@ -76,6 +70,27 @@
                     </select>
                 </div>
 
+                <hr>
+                <h5>Contact Information</h5>
+                <hr>
+
+                <div class="mb-3 mt-3">
+                    <div class="input-group mb-3 mt-3">
+                        <span class="input-group-text fw-bold">Email</span>
+                        <input class="form-control" placeholder="Enter Email" value="<?= $row['email'] ?>" type="email"
+                            name="email" />
+                    </div>
+                    <div class="input-group mb-3 mt-3">
+                        <span class="input-group-text fw-bold">Phone no.</span>
+                        <input class="form-control" maxlength="11" placeholder="Enter Phone Number" type="phone"
+                            name="phone" value="<?= $row['phone_num'] ?>">
+                    </div>
+                </div>
+
+                <hr>
+                <h5>Address Details</h5>
+                <hr>
+
                 <!-- location -->
                 <div class="row row-col-2 mb-3">
                     <div class="col">
@@ -95,6 +110,10 @@
                     </div>
                 </div>
 
+                <hr>
+                <h5>Educational Background</h5>
+                <hr>
+
                 <div class="mb-3 mt-3">
                     <div class="input-group">
                         <span class="input-group-text fw-bold">School</span>
@@ -110,60 +129,141 @@
                 </div>
 
                 <hr>
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Job Title</span>
-                    <input type="text" value="<?= $row['job_title'] ?>" class="form-control"
-                        placeholder="Enter Job Title" name="job_title">
-                </div>
+                <h5>Employment Details</h5>
+                <hr>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Employement Number</span>
-                    <input type="text" value="<?= $row['employement_num'] ?>" class="form-control"
-                        placeholder="Enter employement number" name="employement_num">
-                </div>
+                <div class="row row-col-5 mb-3 mt-3">
 
-                <div class=" input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Department Number</span>
-                    <input type="text" value="<?= $row['department_number'] ?>" class="form-control"
-                        placeholder="Enter department number" name="department_num">
-                </div>
+                    <div class="col">
+                        <label class="form-label fw-bold">Select Job:</label>
+                        <select class="form-control" name="job_title">
+                            <option selected disabled>Select a job title</option>
+                            <option value="Chief Operating Officer" <?= ($row['job_title'] == "Chief Operating Officer") ? "selected" : "" ?>>Chief Operating Officer</option>
+                            <option value="Chief Executive" <?= ($row['job_title'] == "Chief Executive") ? "selected" : "" ?>>Chief Executive</option>
+                            <option value="Chief Financial Officer" <?= ($row['job_title'] == "Chief Financial Officer") ? "selected" : "" ?>>Chief Financial Officer</option>
+                            <option value="Human Resources Manager" <?= ($row['job_title'] == "Human Resources Manager") ? "selected" : "" ?>>Human Resources Manager</option>
+                            <option value="Chief Marketing Officer" <?= ($row['job_title'] == "Chief Marketing Officer") ? "selected" : "" ?>>Chief Marketing Officer</option>
+                            <option value="Manager" <?= ($row['job_title'] == "Manager") ? "selected" : "" ?>>Manager
+                            </option>
+                            <option value="Finance Manager" <?= ($row['job_title'] == "Finance Manager") ? "selected" : "" ?>>Finance Manager</option>
+                            <option value="Assistant" <?= ($row['job_title'] == "Assistant") ? "selected" : "" ?>>Assistant
+                            </option>
+                            <option value="Staff" <?= ($row['job_title'] == "Staff") ? "selected" : "" ?>>Staff</option>
+                            <option value="Other" <?= ($row['job_title'] == "Other") ? "selected" : "" ?>>Other</option>
+                        </select>
+                    </div>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Hire Date</span>
-                    <input type="date" value="<?= $row['hire_date'] ?>" class="form-control" name="hire_date">
-                </div>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Employee Status</span>
-                    <input type="text" value="<?= $row['employee_status'] ?>" class="form-control"
-                        placeholder="Enter Employee Status" name="employee_status">
-                </div>
+                    <div class="col">
+                        <label class="form-label fw-bold">Select Department:</label>
+                        <select class="form-control" name="department">
+                            <option selected disabled>Select department</option>
+                            <option value="HR" <?= ($row['department'] == "HR") ? "selected" : "" ?>>HR</option>
+                            <option value="Finance" <?= ($row['department'] == "Finance") ? "selected" : "" ?>>Finance
+                            </option>
+                            <option value="Production" <?= ($row['department'] == "Production") ? "selected" : "" ?>>
+                                Production</option>
+                            <option value="Accounting" <?= ($row['department'] == "Accounting") ? "selected" : "" ?>>
+                                Accounting</option>
+                            <option value="Quality department" <?= ($row['department'] == "Quality department") ? "selected" : "" ?>>Quality department</option>
+                        </select>
+                    </div>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Job Value</span>
-                    <input type="number" value="<?= $row['job_value'] ?>" class="form-control"
-                        placeholder="Enter job value" name="job_value">
-                </div>
+                    <div class="col">
+                        <label class="form-label fw-bold">Employment Status:</label>
+                        <select class="form-control" name="employee_status">
+                            <option selected disabled>Select status</option>
+                            <option value="Full-Time Employees" <?= ($row['employee_status'] == "Full-Time Employees") ? "selected" : "" ?>>Full-Time Employees</option>
+                            <option value="Part-Time Employees" <?= ($row['employee_status'] == "Part-Time Employees") ? "selected" : "" ?>>Part-Time Employees</option>
+                            <option value="Seasonal Employees" <?= ($row['employee_status'] == "Seasonal Employees") ? "selected" : "" ?>>Seasonal Employees</option>
+                            <option value="Temporary Employees" <?= ($row['employee_status'] == "Temporary Employees") ? "selected" : "" ?>>Temporary Employees</option>
+                        </select>
+                    </div>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Department value</span>
-                    <input type="number" value="<?= $row['dep_value'] ?>" class="form-control"
-                        placeholder="Enter Department value" name="dep_value">
-                </div>
+                    <div class="col d-flex align-items-center justify-content-center">
+                        <div class="input-group" style="height: 1.4rem;">
+                            <span class="input-group-text fw-bold">Employee Id Number</span>
+                            <input type="text" class="form-control" placeholder="Enter Employee Id Number"
+                                name="employement_num" value="<?= $row['employement_num'] ?>">
+                        </div>
+                    </div>
 
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Statistic Value</span>
-                    <input type="number" value="<?= $row['stat_value'] ?>" class="form-control"
-                        placeholder="Enter Statistic Value" name="stat_value">
-                </div>
-
-                <div class="input-group mb-3 mt-3">
-                    <span class="input-group-text fw-bold">Salary</span>
-                    <input type="number" value="<?= $row['salary'] ?>" class="form-control" placeholder="Enter Salary"
-                        name="salary">
+                    <div class="col d-flex align-items-center justify-content-center">
+                        <div class="input-group" style="height: 1.4rem;">
+                            <span class="input-group-text fw-bold">Date of Hire</span>
+                            <input type="date" class="form-control" name="hire_date" value="<?= $row['hire_date'] ?>">
+                        </div>
+                    </div>
                 </div>
 
                 <hr>
+                <h5>Salary & Deduction Details</h5>
+                <hr>
+
+                <?php
+                $bill_sql = "SELECT * FROM `tbl_bill` WHERE `bill_id` = '{$row['account_id']}' ";
+                $bill_res = $conn->query($bill_sql);
+                $bill = $bill_res->fetch_assoc();
+                ?>
+
+                <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text fw-bold">SSS Number</span>
+                    <input type="text" class="form-control" placeholder="Enter SSS number" name="sss"
+                        value="<?= $bill['sss'] ?>">
+                    <span class="input-group-text fw-bold">Pag-Ibig Number</span>
+                    <input type="text" class="form-control" placeholder="Enter Pag-Ibig Number" name="pagibig"
+                        value="<?= $bill['pagibig'] ?>">
+                    <span class="input-group-text fw-bold">PhilHealth Number</span>
+                    <input type="text" class="form-control" placeholder="Enter PhilHealth Number" name="phil"
+                        value="<?= $bill['phil'] ?>">
+                    <span class="input-group-text fw-bold">Basic Salary</span>
+                    <input type="number" class="form-control" placeholder="Enter Basic Salary" name="salary"
+                        value="<?= $row['salary'] ?>">
+                </div>
+
+                <hr>
+                <h5>Emergency Contact</h5>
+                <hr>
+
+                <?php
+                $spouse_sql = "SELECT * FROM `tbl_spouse` WHERE `spouse_id` = '{$row['account_id']}' ";
+                $spouse_res = $conn->query($spouse_sql);
+                $spouse = $spouse_res->fetch_assoc();
+                ?>
+
+                <div class="row row-col-3 input-group mb-3 mt-3">
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Name of Spouse/Guardian</span>
+                        <input type="text" class="form-control" placeholder="Enter Name of Spouse/Guardian"
+                            name="spouse_name" value="<?= $spouse['spouse_name'] ?>">
+                    </div>
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Relationship</span>
+                        <input type="text" class="form-control" placeholder="Enter Relationship" name="sg_relationship" value="<?= $spouse['relationship'] ?>">
+                    </div>
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Spouse/Guardian Phone Number</span>
+                        <input type="number" class="form-control" placeholder="Enter Spouse/Guardian Phone Number"
+                            name="sg_phone_num" value="<?= $spouse['number'] ?>">
+                    </div>
+                </div>
+                <div class="row row-col-3 input-group mb-3 mt-3">
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Spouse/Guardian Email</span>
+                        <input type="email" class="form-control" placeholder="Enter Spouse/Guardian Email"
+                            name="sg_email" value="<?= $spouse['email'] ?>">
+                    </div>
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Barangay</span>
+                        <input type="text" class="form-control" placeholder="Enter Barangay" name="sg_brgy" value="<?= $spouse['brgy'] ?>">
+                    </div>
+                    <div class="col input-group">
+                        <span class="input-group-text fw-bold">Municipality</span>
+                        <input type="text" class="form-control" placeholder="Enter Municipality" name="sg_municipal" value="<?= $spouse['municipality'] ?>">
+                    </div>
+                </div>
+                <hr>
+
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">

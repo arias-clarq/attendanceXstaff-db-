@@ -30,13 +30,21 @@ if(isset($_POST['edit'])){
 
     $job_title = $conn->escape_string($_POST['job_title']);
     $employement_num = $conn->escape_string($_POST['employement_num']);
-    $department_num = $conn->escape_string($_POST['department_num']);
+    $department = $conn->escape_string($_POST['department']);
     $hire_date = $_POST['hire_date'];
     $employee_status = $conn->escape_string($_POST['employee_status']);
-    $job_value = $_POST['job_value'];
-    $dep_value = $_POST['dep_value'];
-    $stat_value = $_POST['stat_value'];
     $salary = $_POST['salary'];
+
+    $spouse_name = $conn->escape_string($_POST['spouse_name']);
+    $sg_relationship = $conn->escape_string($_POST['sg_relationship']);
+    $sg_phone_num = $_POST['sg_phone_num'];
+    $sg_email = $conn->escape_string($_POST['sg_email']);
+    $sg_brgy = $conn->escape_string($_POST['sg_brgy']);
+    $sg_municipal = $conn->escape_string($_POST['sg_municipal']);
+
+    $sss = $conn->escape_string($_POST['sss']);
+    $pagibig = $conn->escape_string($_POST['pagibig']);
+    $phil = $conn->escape_string($_POST['phil']);
 
     $sql = "UPDATE `tbl_employee_account` SET `username`='$username',`password`='$password',`login_role`='$login_role' WHERE `account_id` = $id";
     $result = $conn->query($sql);
@@ -49,14 +57,34 @@ if(isset($_POST['edit'])){
     SET 
     `job_title`= '{$job_title}',
     `employement_num`= '{$employement_num}',
-    `department_number`= '{$department_num}',
+    `department`= '{$department}',
     `hire_date`= '{$hire_date}',
     `employee_status`= '{$employee_status}',
-    `job_value`= '{$job_value}',
-    `dep_value`= '{$dep_value}',
-    `stat_value`='{$stat_value}',
     `salary`='{$salary}' 
     WHERE `job_id` = $id";
+    $result = $conn->query($sql);
+
+    if($result !== true){
+        echo 'Failed to update user account' . $conn->error;
+    }
+
+    $sql = " UPDATE `tbl_bill` SET `sss`='$sss',`pagibig`='$pagibig',`phil`='$phil' WHERE `bill_id` = $id";
+    $result = $conn->query($sql);
+
+    if($result !== true){
+        echo 'Failed to update user account' . $conn->error;
+    }
+
+    $sql = "UPDATE `tbl_spouse` 
+    SET 
+    `spouse_name`='$spouse_name',
+    `relationship`='$sg_relationship',
+    `number`='$sg_phone_num',
+    `email`='$sg_email',
+    `brgy`='$sg_brgy',
+    `municipality`='$sg_municipal' 
+    WHERE `spouse_id` = $id";
+
     $result = $conn->query($sql);
 
     if($result !== true){

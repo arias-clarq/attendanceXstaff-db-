@@ -6,16 +6,22 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav ms-auto">
+                <?php
+                if ($_SESSION['login_role'] == 1) {
+                    ?>
+                    <li class="nav-item">
+                        <a class="nav-link me-3" href="users_mgt.php"><i class="fa-solid fa-users fa-xl"
+                                data-bs-toggle="tooltip" data-bs-placement="left" title="Users Management"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link me-3" href="attendance.php"><i class="fa-solid fa-clipboard-user fa-2xl"
+                                data-bs-toggle="tooltip" data-bs-placement="left" title="Attendance Monitoring"></i></a>
+                    </li>
+                    <?php
+                }
+                ?>
                 <li class="nav-item">
-                    <a class="nav-link me-3" href="users_mgt.php"><i class="fa-solid fa-users fa-xl"
-                            data-bs-toggle="tooltip" data-bs-placement="left" title="Users Management"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link me-3" href="attendance.php"><i class="fa-solid fa-clipboard-user fa-2xl"
-                            data-bs-toggle="tooltip" data-bs-placement="left" title="Attendance Monitoring"></i></a>
-                </li>
-                <li class="nav-item">
-                    <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#profile">
+                    <button class="btn nav-link" data-bs-toggle="modal" data-bs-target="#<?=(isset($_SESSION['login_role']) == 1 || isset($_SESSION['login_role']) == 2) ? "profile" : "profile_client"?>">
                         <i class="fa-solid fa-user fa-xl" data-bs-toggle="tooltip" data-bs-placement="left"
                             title="Profile"></i>
                     </button>
@@ -57,7 +63,10 @@
                     WHERE account_id = $login_id";
             $profRes = $conn->query($sql);
             $profile = $profRes->fetch_assoc();
-            include "profile_modal.php";
+
+            if ($profRes) {
+                include "profile_modal.php";
+            }
             ?>
 
         </div>

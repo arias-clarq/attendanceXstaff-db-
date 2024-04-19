@@ -6,7 +6,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">New Account</h4>
+                    <h4 class="modal-title">Create Employee Account</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 

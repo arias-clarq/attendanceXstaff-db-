@@ -39,4 +39,6 @@
     </div>
 </div>
 
-<?php include "profile_info_modal.php"; ?>
+<?php 
+    include "profile_info_modal.php"; 
+?>

@@ -8,9 +8,7 @@ include '../dashboard/nav.php';
 include '../../config/dbcon.php';
 include '../../config/function.php';
 ?>
-
-<div class="container mt-5">
-    <h2 class='text-white'>Users Management</h2>
+<div class="container justify-content-center mt-3">
     <!-- action msg here -->
     <?php
     if (isset($_SESSION['confirm_msg'])) {
@@ -33,6 +31,10 @@ include '../../config/function.php';
     unset($_SESSION['deleteMsg']);
     unset($_SESSION['confirm_msg']);
     ?>
+</div>
+
+<div class="container mt-3">
+    <h2 class='text-white'>Users Management</h2>
 
     <table class="table table-hover">
 
@@ -41,17 +43,12 @@ include '../../config/function.php';
         </button>
 
         <thead>
-            <!-- <tr>
-                <form action="../../config/employee/add.php" method="post">
-                    
-                </form>
-            </tr> -->
             <tr>
                 <th>#</th>
-                <th>Username</th>
+                <th>Fullname</th>
                 <th>Password</th>
                 <th>Login Role</th>
-                <th></th>
+                <th class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -67,11 +64,17 @@ include '../../config/function.php';
                 ?>
                 <tr>
                     <th></th>
-                    <th><?= $row['username'] ?></th>
+                    <th class="text-capitalize">
+                        <?= $row['lastname'] . " , " . $row['firstname'] . " " . $row['middlename'] ?>
+                    </th>
                     <th>********</th>
                     <th><?= login_role($row['login_role']) ?></th>
                     <th>
                         <div class="text-center">
+                            <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                                data-bs-target="#view_acc<?= $row['account_id'] ?>">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                             <button type="button" class="btn btn-info" data-bs-toggle="modal"
                                 data-bs-target="#edit_acc<?= $row['account_id'] ?>">
                                 <i class="fa-solid fa-user-pen"></i>
@@ -81,8 +84,71 @@ include '../../config/function.php';
                                 <i class="fa-solid fa-user-minus"></i>
                             </button>
                         </div>
+                        <?php include 'modals/view_account.php'; ?>
                         <?php include 'modals/edit_account.php'; ?>
                         <?php include 'modals/del.php'; ?>
+                    </th>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="container mt-3">
+    <h2 class='text-white'>Client Management</h2>
+
+    <table class="table table-hover">
+
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Fullname</th>
+                <th>Address</th>
+                <th>Contact Number</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php
+            $clientSQL = "SELECT * FROM `tbl_client_account` INNER JOIN tbl_client_info ON tbl_client_account.client_info_id = tbl_client_info.client_info_id";
+            $res2 = $conn->query($clientSQL);
+            while ($client = $res2->fetch_assoc()) {
+                ?>
+                <tr>
+                    <th><?= $client['client_id'] ?></th>
+                    <th><?= $client['lastname'] . ' , ' . $client['firstname'] . ' ' . $client['middlename'] ?></th>
+                    <th>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Barangay</th>
+                                    <th>Municipality</th>
+                                    <th>Province</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><?= $client['brgy']?></td>
+                                    <td><?= $client['municipality']?></td>
+                                    <td><?= $client['province']?></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </th>
+                    <th><?= $client['phone_num'] ?></th>
+                    <th>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit_client<?= $client['client_id'] ?>">
+                                <i class="fa-solid fa-user-pen"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#delete_client<?= $client['client_id'] ?>">
+                                <i class="fa-solid fa-user-minus"></i>
+                            </button>
+                        </div>
+                        <?php include 'modals/del_client.php'; ?>
+                        <?php include 'modals/edit_client.php'; ?>
                     </th>
                 </tr>
             <?php } ?>
