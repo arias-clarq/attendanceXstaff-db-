@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2024 at 05:03 PM
+-- Generation Time: Apr 19, 2024 at 07:17 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -40,8 +40,8 @@ CREATE TABLE `tbl_bill` (
 
 INSERT INTO `tbl_bill` (`bill_id`, `sss`, `pagibig`, `phil`) VALUES
 (1, NULL, NULL, NULL),
-(2, NULL, NULL, NULL),
-(3, NULL, NULL, NULL);
+(7, '365', '2464', '82634'),
+(8, 'ads23', 'dsa23', 'gf34');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,8 @@ CREATE TABLE `tbl_employee_account` (
 
 INSERT INTO `tbl_employee_account` (`account_id`, `username`, `password`, `login_role`, `employee_info_id`, `job_id`) VALUES
 (1, 'admin@gmail.com', 'admin', 1, 1, 1),
-(2, 'clarq@gmail.com', 'clarq', 1, 2, 2);
+(7, 'clarq@gmail.com', 'clarq', 1, 7, 7),
+(8, 'juliana@gmail.com', 'juliana', 2, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -100,7 +101,8 @@ CREATE TABLE `tbl_employee_info` (
 
 INSERT INTO `tbl_employee_info` (`employee_info_id`, `spouse_id`, `bill_id`, `firstname`, `middlename`, `lastname`, `birthdate`, `gender`, `age`, `marital_status`, `id_profile`, `email`, `phone_num`, `province`, `zip`, `elem`, `jhs`, `shs`, `college`) VALUES
 (1, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 2, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(7, 7, 7, 'clarq anderson', 'pangan', 'arias', '2003-08-08', 'male', 20, 'in_a_relationship', NULL, 'clarq@gmail.com', 9123456789, 'Pampanga', '01243', 'mandasig', 'hcc', 'hcc', 'hcc'),
+(8, 8, 8, 'juliana', 'paguinto', 'arla', '2003-04-24', 'female', 20, 'single', NULL, 'juliana@gmail.com', 38090918309, 'Pampanga', '89423', 'sad', 'ssdg', 'ewf', 'awdww');
 
 -- --------------------------------------------------------
 
@@ -112,7 +114,7 @@ CREATE TABLE `tbl_employement` (
   `job_id` int(100) NOT NULL,
   `job_title` varchar(100) DEFAULT NULL,
   `employement_num` varchar(100) DEFAULT NULL,
-  `department_number` varchar(100) DEFAULT NULL,
+  `department` varchar(100) DEFAULT NULL,
   `hire_date` date DEFAULT NULL,
   `employee_status` varchar(100) DEFAULT NULL,
   `job_value` int(100) DEFAULT NULL,
@@ -125,9 +127,10 @@ CREATE TABLE `tbl_employement` (
 -- Dumping data for table `tbl_employement`
 --
 
-INSERT INTO `tbl_employement` (`job_id`, `job_title`, `employement_num`, `department_number`, `hire_date`, `employee_status`, `job_value`, `dep_value`, `stat_value`, `salary`) VALUES
+INSERT INTO `tbl_employement` (`job_id`, `job_title`, `employement_num`, `department`, `hire_date`, `employee_status`, `job_value`, `dep_value`, `stat_value`, `salary`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(7, 'Chief Executive', '243369', 'Quality department', '2024-04-19', 'Full-Time Employees', 0, 0, 0, 30000),
+(8, 'Chief Operating Officer', '2313', 'Production', '2024-04-19', 'Full-Time Employees', NULL, NULL, NULL, 25000);
 
 -- --------------------------------------------------------
 
@@ -151,7 +154,8 @@ CREATE TABLE `tbl_spouse` (
 
 INSERT INTO `tbl_spouse` (`spouse_id`, `spouse_name`, `relationship`, `number`, `email`, `brgy`, `municipality`) VALUES
 (1, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, NULL, NULL, NULL, NULL, NULL, NULL);
+(7, 'sun and moon', 'master', 9123456788, 'sunandmoon@gmail.com', 'galaxy', 'milky way'),
+(8, 'dsd', 'dsasda', 23142421235, 'juliana@gmail.com', 'fddffd', 'daadas');
 
 --
 -- Indexes for dumped tables
@@ -171,7 +175,7 @@ ALTER TABLE `tbl_employee_account`
 -- AUTO_INCREMENT for table `tbl_employee_account`
 --
 ALTER TABLE `tbl_employee_account`
-  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `account_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
